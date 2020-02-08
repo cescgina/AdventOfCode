@@ -5,7 +5,7 @@ main:
 	$(CC) $(CFLAGS) -o pr2.o pr2.cpp
 
 test: main
-	@echo "Answer should be 4"
+	@echo "Answer should be 17"
 	./pr2.o data/test.txt
 
 run: main
