@@ -1,0 +1,510 @@
+g++ -Wall -O2 -Wpedantic -Wextra -o pr2.o pr2.cpp
+./pr2.o data/input.txt
+644
+projectile magnetic jellybean training 
+900
+cryogenic flower design 
+932
+cryogenic bunny engineering 
+798
+top secret candy coating design 
+971
+biohazardous jellybean training 
+532
+top secret international bunny marketing 
+564
+colorful scavenger hunt design 
+595
+magnetic rabbit reacquisition 
+356
+colorful projectile dye technology 
+583
+top secret scavenger hunt management 
+621
+projectile chocolate engineering 
+671
+biohazardous scavenger hunt purchasing 
+129
+unstable biohazardous plastic grass management 
+939
+colorful rabbit sales 
+616
+radioactive flower design 
+414
+classified egg financing 
+784
+colorful candy operations 
+511
+classified candy coating containment 
+521
+radioactive flower storage 
+394
+corrosive flower management 
+658
+classified dye development 
+438
+consumer grade egg workshop 
+173
+cryogenic dye management 
+673
+rampaging radioactive jellybean technology 
+292
+military grade egg user testing 
+226
+classified cryogenic plastic grass logistics 
+595
+consumer grade rabbit user testing 
+608
+projectile dye customer service 
+742
+military grade rabbit research 
+190
+rampaging basket logistics 
+855
+cryogenic candy reacquisition 
+614
+radioactive chocolate development 
+232
+projectile flower reacquisition 
+407
+magnetic chocolate marketing 
+899
+consumer grade scavenger hunt deployment 
+373
+military grade candy management 
+244
+biohazardous weaponized scavenger hunt analysis 
+395
+classified egg purchasing 
+351
+unstable rabbit acquisition 
+459
+fuzzy dye acquisition 
+189
+cryogenic plastic grass reacquisition 
+977
+military grade egg workshop 
+678
+radioactive rabbit management 
+217
+top secret weaponized candy logistics 
+891
+unstable plastic grass reacquisition 
+498
+radioactive flower operations 
+571
+military grade scavenger hunt workshop 
+154
+radioactive candy reacquisition 
+530
+radioactive bunny research 
+214
+unstable egg analysis 
+769
+corrosive dye purchasing 
+558
+fuzzy jellybean receiving 
+187
+radioactive chocolate operations 
+889
+biohazardous rabbit customer service 
+817
+magnetic bunny design 
+544
+biohazardous candy customer service 
+384
+rampaging rabbit financing 
+346
+classified radioactive scavenger hunt storage 
+623
+top secret basket design 
+183
+rampaging basket engineering 
+454
+projectile rabbit purchasing 
+697
+cryogenic scavenger hunt storage 
+959
+rampaging flower marketing 
+507
+radioactive basket financing 
+103
+fuzzy basket laboratory 
+197
+weaponized bunny deployment 
+566
+magnetic jellybean financing 
+531
+top secret scavenger hunt laboratory 
+892
+fuzzy scavenger hunt engineering 
+472
+unstable jellybean user testing 
+643
+magnetic basket financing 
+833
+magnetic projectile scavenger hunt customer service 
+743
+colorful military grade candy coating management 
+719
+cryogenic bunny development 
+634
+weaponized magnetic plastic grass workshop 
+774
+classified chocolate reacquisition 
+241
+military grade colorful scavenger hunt customer service 
+525
+top secret plastic grass services 
+535
+projectile cryogenic candy coating training 
+826
+colorful flower management 
+201
+classified egg laboratory 
+396
+rampaging chocolate containment 
+524
+rampaging dye financing 
+761
+rampaging scavenger hunt financing 
+587
+fuzzy candy marketing 
+451
+radioactive rabbit acquisition 
+534
+weaponized jellybean deployment 
+892
+classified scavenger hunt training 
+671
+military grade jellybean receiving 
+751
+corrosive fuzzy bunny receiving 
+649
+weaponized candy research 
+314
+colorful basket customer service 
+476
+biohazardous flower receiving 
+528
+international bunny workshop 
+838
+top secret fuzzy rabbit purchasing 
+795
+corrosive jellybean services 
+516
+international biohazardous egg reacquisition 
+606
+international bunny research 
+741
+colorful plastic grass acquisition 
+566
+consumer grade dye acquisition 
+960
+consumer grade dye operations 
+946
+radioactive egg acquisition 
+614
+fuzzy chocolate receiving 
+840
+projectile chocolate sales 
+258
+classified egg services 
+526
+military grade candy coating reacquisition 
+441
+classified flower logistics 
+665
+colorful dye logistics 
+472
+weaponized dye development 
+857
+biohazardous fuzzy bunny research 
+100
+weaponized egg deployment 
+134
+radioactive candy coating customer service 
+807
+fuzzy jellybean analysis 
+418
+military grade candy coating department 
+905
+military grade biohazardous bunny laboratory 
+485
+unstable flower shipping 
+316
+classified flower acquisition 
+986
+colorful candy coating engineering 
+859
+international egg operations 
+586
+corrosive candy coating research 
+649
+fuzzy basket department 
+314
+corrosive candy coating reacquisition 
+860
+rampaging chocolate purchasing 
+550
+consumer grade dye management 
+930
+colorful basket receiving 
+466
+top secret chocolate logistics 
+446
+classified egg management 
+610
+international plastic grass reacquisition 
+819
+rampaging egg reacquisition 
+241
+magnetic basket sales 
+542
+consumer grade jellybean technology 
+493
+cryogenic egg laboratory 
+897
+cryogenic egg receiving 
+200
+military grade rabbit department 
+336
+weaponized dye customer service 
+229
+projectile candy coating reacquisition 
+658
+classified bunny shipping 
+199
+top secret candy coating analysis 
+512
+weaponized flower training 
+501
+northpole object storage 
+449
+international jellybean marketing 
+751
+radioactive flower shipping 
+282
+biohazardous basket workshop 
+428
+rampaging flower deployment 
+732
+cryogenic dye customer service 
+968
+fuzzy basket marketing 
+353
+fuzzy scavenger hunt storage 
+110
+corrosive rabbit user testing 
+242
+biohazardous candy training 
+508
+colorful scavenger hunt deployment 
+585
+weaponized international basket laboratory 
+365
+international bunny deployment 
+203
+international flower analysis 
+170
+biohazardous rabbit engineering 
+659
+fuzzy rabbit user testing 
+582
+weaponized dye purchasing 
+927
+military grade jellybean engineering 
+227
+weaponized bunny laboratory 
+959
+projectile flower development 
+723
+radioactive candy coating services 
+533
+radioactive candy coating research 
+139
+rampaging rabbit user testing 
+250
+consumer grade dye shipping 
+783
+radioactive rabbit financing 
+851
+biohazardous dye containment 
+897
+biohazardous egg development 
+679
+fuzzy radioactive basket department 
+604
+cryogenic colorful dye research 
+649
+weaponized magnetic rabbit analysis 
+207
+fuzzy jellybean acquisition 
+197
+corrosive flower storage 
+748
+top secret jellybean containment 
+662
+cryogenic rabbit development 
+471
+unstable basket customer service 
+262
+international dye research 
+667
+rampaging rabbit management 
+183
+biohazardous jellybean marketing 
+919
+top secret flower sales 
+245
+biohazardous chocolate development 
+738
+weaponized jellybean research 
+566
+fuzzy bunny financing 
+921
+consumer grade candy storage 
+160
+rampaging rabbit development 
+730
+weaponized basket logistics 
+608
+rampaging rabbit workshop 
+367
+biohazardous cryogenic rabbit user testing 
+431
+radioactive dye storage 
+643
+classified plastic grass storage 
+839
+fuzzy egg engineering 
+918
+biohazardous flower training 
+903
+international rabbit management 
+316
+top secret plastic grass logistics 
+856
+top secret egg design 
+965
+rampaging chocolate storage 
+863
+military grade jellybean training 
+143
+top secret egg acquisition 
+162
+international chocolate research 
+852
+magnetic plastic grass workshop 
+109
+fuzzy chocolate user testing 
+326
+magnetic unstable bunny technology 
+591
+cryogenic dye user testing 
+341
+radioactive plastic grass deployment 
+150
+top secret bunny training 
+183
+projectile candy design 
+720
+unstable jellybean purchasing 
+114
+military grade candy coating shipping 
+695
+weaponized jellybean purchasing 
+313
+magnetic unstable candy coating research 
+631
+weaponized chocolate technology 
+238
+classified rabbit training 
+263
+international candy design 
+266
+radioactive egg storage 
+129
+unstable scavenger hunt development 
+321
+cryogenic candy coating department 
+874
+biohazardous basket department 
+604
+weaponized candy coating services 
+996
+consumer grade basket logistics 
+411
+radioactive flower laboratory 
+299
+corrosive basket customer service 
+336
+rampaging chocolate user testing 
+925
+fuzzy basket purchasing 
+279
+classified rabbit user testing 
+895
+colorful jellybean design 
+801
+consumer grade flower technology 
+185
+cryogenic candy coating acquisition 
+308
+cryogenic candy storage 
+641
+magnetic basket development 
+595
+classified chocolate training 
+894
+corrosive scavenger hunt operations 
+556
+corrosive jellybean deployment 
+163
+corrosive scavenger hunt research 
+303
+cryogenic dye reacquisition 
+845
+international candy financing 
+997
+fuzzy top secret plastic grass containment 
+748
+biohazardous basket engineering 
+989
+colorful candy laboratory 
+215
+cryogenic dye workshop 
+124
+fuzzy plastic grass operations 
+138
+fuzzy egg logistics 
+980
+unstable candy containment 
+732
+projectile scavenger hunt engineering 
+693
+magnetic scavenger hunt research 
+212
+classified cryogenic basket logistics 
+639
+fuzzy rabbit design 
+472
+consumer grade basket technology 
+608
+rampaging rabbit storage 
+887
+unstable classified flower user testing 
+788
+military grade candy coating training 
+273
+fuzzy plastic grass user testing 
+112
+radioactive plastic grass analysis 
+600
+biohazardous jellybean development 
+283
+rampaging chocolate workshop 
+265
+top secret candy coating training 
+298
+international candy logistics 
