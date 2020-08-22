@@ -1,0 +1,304 @@
+g++ -Wall -O2 -Wpedantic -Wextra -march=native -o pr1.o pr1.cpp
+./pr1.o data/input.txt
+dafhebgc
+swap position 5 with position 6
+dafhegbc
+
+reverse positions 1 through 6
+dbgehfac
+
+rotate right 7 steps
+bgehfacd
+
+rotate based on position of letter c
+bgehfacd
+
+rotate right 7 steps
+gehfacdb
+
+reverse positions 0 through 4
+afhegcdb
+
+swap letter f with letter h
+ahfegcdb
+
+reverse positions 1 through 2
+afhegcdb
+
+move position 1 to position 0
+fahegcdb
+
+rotate based on position of letter f
+bfahegcd
+
+move position 6 to position 3
+bfachegd
+
+reverse positions 3 through 6
+bfagehcd
+
+rotate based on position of letter c
+bfagehcd
+
+rotate based on position of letter b
+dbfagehc
+
+move position 2 to position 4
+dbagfehc
+
+swap letter b with letter d
+bdagfehc
+
+move position 1 to position 6
+bagfehdc
+
+move position 7 to position 1
+bcagfehd
+
+swap letter f with letter c
+bfagcehd
+
+move position 2 to position 3
+bfgacehd
+
+swap position 1 with position 7
+bdgacehf
+
+reverse positions 3 through 5
+bdgecahf
+
+swap position 1 with position 4
+bcgedahf
+
+move position 4 to position 7
+bcgeahfd
+
+rotate right 4 steps
+ahfdbcge
+
+reverse positions 3 through 6
+ahfgcbde
+
+move position 0 to position 6
+hfgcbdae
+
+swap position 3 with position 5
+hfgdbcae
+
+swap letter e with letter h
+efgdbcah
+
+rotate based on position of letter c
+fgdbcahe
+
+swap position 4 with position 7
+fgdbeahc
+
+reverse positions 0 through 5
+aebdgfhc
+
+rotate right 5 steps
+dgfhcaeb
+
+rotate left 0 steps
+dgfhcaeb
+
+rotate based on position of letter f
+aebdgfhc
+
+swap letter e with letter b
+abedgfhc
+
+rotate right 2 steps
+hcabedgf
+
+rotate based on position of letter c
+gfhcabed
+
+swap letter a with letter e
+gfhcebad
+
+rotate left 4 steps
+ebadgfhc
+
+rotate left 0 steps
+ebadgfhc
+
+move position 6 to position 7
+ebadgfch
+
+rotate right 2 steps
+chebadgf
+
+rotate left 6 steps
+gfchebad
+
+rotate based on position of letter d
+dgfcheba
+
+swap letter a with letter b
+dgfcheab
+
+move position 5 to position 4
+dgfcehab
+
+reverse positions 0 through 7
+bahecfgd
+
+rotate left 3 steps
+ecfgdbah
+
+rotate based on position of letter e
+hecfgdba
+
+rotate based on position of letter h
+ahecfgdb
+
+swap position 4 with position 6
+ahecdgfb
+
+reverse positions 4 through 5
+ahecgdfb
+
+reverse positions 5 through 7
+ahecgbfd
+
+rotate left 3 steps
+cgbfdahe
+
+move position 7 to position 2
+cgebfdah
+
+move position 3 to position 4
+cgefbdah
+
+swap letter b with letter d
+cgefdbah
+
+reverse positions 3 through 4
+cgedfbah
+
+swap letter e with letter a
+cgadfbeh
+
+rotate left 4 steps
+fbehcgad
+
+swap position 3 with position 4
+fbechgad
+
+swap position 7 with position 5
+fbechdag
+
+rotate right 1 step
+gfbechda
+
+rotate based on position of letter g
+agfbechd
+
+reverse positions 0 through 3
+bfgaechd
+
+swap letter g with letter b
+gfbaechd
+
+rotate based on position of letter b
+chdgfbae
+
+swap letter a with letter c
+ahdgfbce
+
+swap position 0 with position 2
+dhagfbce
+
+reverse positions 1 through 3
+dgahfbce
+
+rotate left 7 steps
+edgahfbc
+
+swap letter f with letter a
+edgfhabc
+
+move position 5 to position 0
+aedgfhbc
+
+reverse positions 1 through 5
+ahfgdebc
+
+rotate based on position of letter d
+fgdebcah
+
+rotate based on position of letter c
+gdebcahf
+
+rotate left 2 steps
+ebcahfgd
+
+swap letter b with letter a
+eacbhfgd
+
+swap letter f with letter c
+eafbhcgd
+
+swap letter h with letter f
+eahbfcgd
+
+rotate based on position of letter b
+fcgdeahb
+
+rotate left 3 steps
+deahbfcg
+
+swap letter b with letter h
+deabhfcg
+
+reverse positions 1 through 7
+dgcfhbae
+
+rotate based on position of letter h
+cfhbaedg
+
+swap position 1 with position 5
+cehbafdg
+
+rotate left 1 step
+ehbafdgc
+
+rotate based on position of letter h
+gcehbafd
+
+reverse positions 0 through 1
+cgehbafd
+
+swap position 5 with position 7
+cgehbdfa
+
+reverse positions 0 through 2
+egchbdfa
+
+reverse positions 1 through 3
+ehcgbdfa
+
+move position 1 to position 4
+ecgbhdfa
+
+reverse positions 1 through 3
+ebgchdfa
+
+rotate left 1 step
+bgchdfae
+
+swap position 4 with position 1
+bdchgfae
+
+move position 1 to position 3
+bchdgfae
+
+rotate right 2 steps
+aebchdgf
+
+move position 0 to position 5
+ebchdagf
+
+ebchdagf
