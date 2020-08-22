@@ -16,26 +16,26 @@ typedef std::set<std::string> visited;
 typedef std::tuple<int, cluster, int, int> info;
 
 void print_state(const cluster& state, const size_t& rows, const size_t& cols){
-    for (size_t i = 1; i < rows-1; i++){
-        for (size_t j = 1; j < cols-1; j++){
-            std::cout << state[i][j].first << "T/" << state[i][j].first+state[i][j].second << "T - ";
+    for (size_t i = 0; i < rows; i++){
+        for (size_t j = 0; j < cols; j++){
+            if (state[i][j].first == 0) std::cout<< "_";
+            else if (state[i][j].first > 300) std::cout << "#"; 
+            else std::cout << ".";
         }
         std::cout << std::endl;
     }
 }
 
-inline int calc_dist(const size_t& x,const size_t& y, const size_t& gx, const size_t& gy){
-    return std::abs((int)x-(int)gx)+std::abs((int)y-(int)gy);
-}
-
-std::string hash_state(const cluster& state, const size_t& rows, const size_t& cols){
-    std::string hash;
-    for (size_t i = 1; i < rows-1; i++){
-        for (size_t j = 1; j < cols-1; j++){
-            hash += std::to_string(state[i][j].first);
+void find_empty(const cluster& state, const size_t& rows, const size_t& cols, size_t& x, size_t& y){
+    for (size_t i = 0; i < rows; i++){
+        for (size_t j = 0; j < cols; j++){
+            if (state[i][j].first == 0){
+                x = j;
+                y = i;
+                return;
+            }
         }
     }
-    return hash;
 }
 
 int main(int argc, char** argv){
@@ -47,7 +47,6 @@ int main(int argc, char** argv){
     int x = 0, y = 0, used = 0, avail = 0;
     std::vector<std::string> parsed_line;
     std::vector<std::pair<int, int>> row;
-    std::pair<int, int> null_node = std::make_pair(10000, 0);
     input_file.open(file_name);
     std::getline(input_file, line);
     std::getline(input_file, line);
@@ -61,7 +60,6 @@ int main(int argc, char** argv){
         y = std::stoi(node.substr(pos+2));
         if (x == 0){
             row.clear();
-            row.push_back(null_node);
             row.push_back(std::make_pair(used, avail));
             grid.push_back(row);
         }
@@ -70,117 +68,8 @@ int main(int argc, char** argv){
         }
     }
     input_file.close();
-    for (auto it = grid.begin(); it != grid.end(); it++){
-        it->push_back(null_node);
-    }
-    row = grid[0];
-    std::fill(row.begin(), row.end(), null_node);
-    grid.push_back(row);
-    grid.insert(grid.begin(), row);
-    size_t n_rows = grid.size(), n_cols = grid[0].size();
-    auto cmp = [](info left, info right) {return std::get<0>(left) > std::get<0>(right);};
-    std::priority_queue<info, std::vector<info>, decltype(cmp)> paths(cmp);
-    size_t goal_x = n_cols-2, goal_y = 1, steps;
-    paths.push(std::make_tuple(steps, grid, goal_x, goal_y));
-    info element;
-    visited history;
-    while (not paths.empty()){
-        element = paths.top();
-        paths.pop();
-        steps = std::get<0>(element);
-        grid = std::get<1>(element);
-        goal_x = std::get<2>(element);
-        goal_y = std::get<3>(element);
-        // if (steps == 2) return 0;
-        std::cout << steps << " " << goal_x << "," << goal_y << std::endl;
-        for (size_t i = 1; i < n_rows-1; i++){
-            for (size_t j = n_cols-2; j > 0; j--){
-                if (calc_dist(j, i, goal_x, goal_y) > 60) continue;
-                if (grid[i][j].first > 0 and grid[i][j].first < grid[i-1][j].second){
-                    // up
-                    //std::cout << "Up!" << std::endl;
-                    cluster grid_cp = grid;
-                    grid_cp[i][j].second += grid_cp[i][j].first;
-                    grid_cp[i-1][j].second -= grid_cp[i][j].first;
-                    grid_cp[i-1][j].first += grid_cp[i][j].first;
-                    grid_cp[i][j].first = 0;
-                    std::string hash = hash_state(grid_cp, n_rows, n_cols);
-                    if (history.find(hash) == history.end()){
-                        history.insert(hash);
-                        if (goal_y == i and goal_x == j){
-                            if ((i-1) == 1 and j == 1){
-                                std::cout << steps+1 << std::endl;
-                                return 0;
-                            }
-                            paths.push(std::make_tuple(steps+1, grid_cp, goal_x, goal_y-1));
-                        }
-                        else{
-                            paths.push(std::make_tuple(steps+1, grid_cp, goal_x, goal_y));
-                        }
-                    }
-                }
-                if (grid[i][j].first > 0 and grid[i][j].first < grid[i+1][j].second){
-                    // down
-                    //std::cout << "Down!" << std::endl;
-                    cluster grid_cp = grid;
-                    grid_cp[i][j].second += grid_cp[i][j].first;
-                    grid_cp[i+1][j].second -= grid_cp[i][j].first;
-                    grid_cp[i+1][j].first += grid_cp[i][j].first;
-                    grid_cp[i][j].first = 0;
-                    std::string hash = hash_state(grid_cp, n_rows, n_cols);
-                    if (history.find(hash) == history.end()){
-                        history.insert(hash);
-                        if (goal_y == i and goal_x == j){
-                            paths.push(std::make_tuple(steps+1, grid_cp, goal_x, goal_y+1));
-                        }
-                        else{
-                            paths.push(std::make_tuple(steps+1, grid_cp, goal_x, goal_y));
-                        }
-                    }
-                }
-                if (grid[i][j].first > 0 and grid[i][j].first < grid[i][j+1].second){
-                    // right
-                    //std::cout << "Right!" << std::endl;
-                    cluster grid_cp = grid;
-                    grid_cp[i][j].second += grid_cp[i][j].first;
-                    grid_cp[i][j+1].second -= grid_cp[i][j].first;
-                    grid_cp[i][j+1].first += grid_cp[i][j].first;
-                    grid_cp[i][j].first = 0;
-                    std::string hash = hash_state(grid_cp, n_rows, n_cols);
-                    if (history.find(hash) == history.end()){
-                        history.insert(hash);
-                        if (goal_y == i and goal_x == j){
-                            paths.push(std::make_tuple(steps+1, grid_cp, goal_x+1, goal_y));
-                        }
-                        else{
-                            paths.push(std::make_tuple(steps+1, grid_cp, goal_x, goal_y));
-                        }
-                    }
-                }
-                if (grid[i][j].first > 0 and grid[i][j].first < grid[i][j-1].second){
-                    // left
-                    //std::cout << "Left!" << std::endl;
-                    cluster grid_cp = grid;
-                    grid_cp[i][j].second += grid_cp[i][j].first;
-                    grid_cp[i][j-1].second -= grid_cp[i][j].first;
-                    grid_cp[i][j-1].first += grid_cp[i][j].first;
-                    grid_cp[i][j].first = 0;
-                    std::string hash = hash_state(grid_cp, n_rows, n_cols);
-                    if (history.find(hash) == history.end()){
-                        history.insert(hash);
-                        if (goal_y == i and goal_x == j){
-                            if (i == 1 and (j-1) == 1){
-                                std::cout << steps+1 << std::endl;
-                                return 0;
-                            }
-                            paths.push(std::make_tuple(steps+1, grid_cp, goal_x-1, goal_y));
-                        }
-                        else{
-                            paths.push(std::make_tuple(steps+1, grid_cp, goal_x, goal_y));
-                        }
-                    }
-                }
-            }
-        }
-    }
+    size_t n_rows = grid.size(), n_cols = grid[0].size(), x0, y0;
+    print_state(grid, n_rows, n_cols);
+    find_empty(grid, n_rows, n_cols, x0, y0);
+    std::cout << 1+(x0-1)+y0+(n_cols-3)+(n_cols-2)*5 << std::endl;
 }
