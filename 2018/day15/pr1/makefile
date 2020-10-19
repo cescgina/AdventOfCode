@@ -9,7 +9,7 @@ test: main
 	./pr1.o data/test.txt
 
 test_debug: main
-	./pr1.o data/test_debug.txt
+	./pr1.o data/test_detail.txt
 
 run: main
 	./pr1.o data/input.txt
