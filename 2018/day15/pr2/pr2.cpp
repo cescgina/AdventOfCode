@@ -38,7 +38,6 @@ struct Unit{
 
 struct Compare
 {
-    //using is_transparent = void;
     bool operator() (const std::shared_ptr<Unit>& a, const std::shared_ptr<Unit>& b) const
     {
         return *a < *b;
@@ -255,40 +254,15 @@ void print_grid(grid& grid_state){
     std::cout << std::endl;
 }
 
-int main(int argc, char** argv){
-    std::string file_name, line;
-    getopt(argc, argv, "");
-    file_name = std::string(argv[optind]);
-    std::ifstream input_file;
-    input_file.open(file_name);
-    grid cavern;
+int simulate_battle(units orig_unit_set, grid cavern, int attack){
     location_map units_map;
     unit_per_type goblins_list;
     unit_per_type elf_list;
-    units unit_set;
-    int i = 0, id = 0;
-    for(std::string line; std::getline(input_file, line);){
-        row_map row;
-        for (int j=0; j<(int)line.size(); j++){
-            if (line[j] == 'E'){
-                // found elf
-                Unit elf {i, j, 'E', 3, 200, id};
-                unit_set.insert(std::make_shared<Unit>(elf));
-                id++;
-            }
-            else if(line[j] == 'G'){
-                // found goblin
-                Unit goblin {i, j, 'G', 3, 200, id};
-                unit_set.insert(std::make_shared<Unit>(goblin));
-                id++;
-            }
-            row.push_back(line[j]);
-        }
-        cavern.push_back(row);
-        i++;
+    units unit_set_cp;
+    for (const auto& el: orig_unit_set){
+        unit_set_cp.insert(std::make_shared<Unit>(*el));
     }
-    input_file.close();
-    for (const auto& el: unit_set){
+    for (const auto& el: unit_set_cp){
         // create pointers from the set pointers, since
         // STL containers create copies
         units_map[std::make_pair(el->x, el->y)] = std::shared_ptr<Unit>(el);
@@ -296,15 +270,23 @@ int main(int argc, char** argv){
             goblins_list.push_back(std::shared_ptr<Unit>(el));
         }
         else{
+            // elfs attack level
+            el->attack = attack;
             elf_list.push_back(std::shared_ptr<Unit>(el));
         }
     }
     int rounds = 1;
+    size_t original_elves = elf_list.size();
     while (true){
-        if (DEBUG) std::cout << "Starting round " << rounds << " with " << unit_set.size() << " units " << std::endl;
+        if (DEBUG) std::cout << "Starting round " << rounds << " with " << unit_set_cp.size() << " units " << std::endl;
+        if (elf_list.size() < original_elves){
+            // an elf has died, not enough power
+            if (DEBUG) std::cout << "An elf has died" << std::endl;
+            return -1;
+        }
         units round_order;
         // make sure we iterate in order
-        for (const auto& el: unit_set){
+        for (const auto& el: unit_set_cp){
             round_order.insert(std::shared_ptr<Unit>(el));
         }
         for (auto ptr_unit: round_order){
@@ -352,19 +334,63 @@ int main(int argc, char** argv){
         }
         if (DEBUG) print_grid(cavern);
         // clean dead units
-        for (auto it = unit_set.begin(); it != unit_set.end(); it++) {
+        for (auto it = unit_set_cp.begin(); it != unit_set_cp.end(); it++) {
             if ((*it)->hp < 1){
-                it = unit_set.erase(it);
+                if ((*it)->type == 'E'){
+                    if (DEBUG) std::cout << "An elf has died" << std::endl;
+                    return -1;
+                }
+                it = unit_set_cp.erase(it);
             }
         }
-        if (finish_combat(unit_set)){
+        if (finish_combat(unit_set_cp)){
             int remaining_hp = 0;
-            for (auto& unit: unit_set){
+            for (auto& unit: unit_set_cp){
                 remaining_hp += unit->hp;
             }
-            std::cout << "Finished combats with " << rounds*remaining_hp << std::endl;
-            return 0;
+            return rounds*remaining_hp;
         }
         rounds++;
+    }
+}
+int main(int argc, char** argv){
+    std::string file_name, line;
+    getopt(argc, argv, "");
+    file_name = std::string(argv[optind]);
+    std::ifstream input_file;
+    input_file.open(file_name);
+    grid cavern;
+    units unit_set;
+    int i = 0, id = 0;
+    for(std::string line; std::getline(input_file, line);){
+        row_map row;
+        for (int j=0; j<(int)line.size(); j++){
+            if (line[j] == 'E'){
+                // found elf
+                Unit elf {i, j, 'E', 3, 200, id};
+                unit_set.insert(std::make_shared<Unit>(elf));
+                id++;
+            }
+            else if(line[j] == 'G'){
+                // found goblin
+                Unit goblin {i, j, 'G', 3, 200, id};
+                unit_set.insert(std::make_shared<Unit>(goblin));
+                id++;
+            }
+            row.push_back(line[j]);
+        }
+        cavern.push_back(row);
+        i++;
+    }
+    input_file.close();
+    int attack_level = 4;
+    int outcome = 0;
+    while (true){
+        outcome = simulate_battle(unit_set, cavern, attack_level);
+        if (outcome > 0){
+            std::cout << "Finished combats of power " << attack_level << " with " << outcome << std::endl;
+            return 0;
+        }
+        attack_level++;
     }
 }

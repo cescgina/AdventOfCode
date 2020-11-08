@@ -8,8 +8,13 @@ main:
 test: main
 	./pr1.o data/test.txt
 
-test_debug: main
+test_detail: main 
 	./pr1.o data/test_detail.txt
+
+test_debug: 
+#	./pr1.o data/test_detail.txt
+	$(CC) $(DEBUGFLAGS) -o pr1.o pr1.cpp
+	gdb -x gdb_commands -ex run --args pr1.o data/test_detail.txt
 
 run: main
 	./pr1.o data/input.txt
