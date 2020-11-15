@@ -13,7 +13,6 @@ struct Ray{
 };
 
 typedef std::unordered_map<std::pair<int, int>, int, boost::hash<std::pair<int, int>>> map_clay;
-typedef std::unordered_set<std::pair<int, int>, boost::hash<std::pair<int, int>>> sources;
 typedef std::list<Ray> rays_set;
 
 bool is_clay(int col, int row, map_clay& current_state){
@@ -140,7 +139,7 @@ int count_tiles(map_clay& current_state, int& y_min, int& y_max){
         if (it->first.first < y_min or it->first.first > y_max){
             continue;
         }
-        count += (it->second > 1);
+        count += (it->second == 2);
     }
     return count;
 }
