@@ -315,7 +315,7 @@ void update_xy(state& current, long long direction){
     }
 }
 
-typedef std::unordered_map<std::pair<int, int>, int, boost::hash<std::pair<int, int>>> map_paths;
+typedef std::map<std::pair<int, int>, int> map_paths;
 typedef std::unordered_set<std::pair<int, int>, boost::hash<std::pair<int, int>>> seen_paths;
 
 bool is_blocked(state& current, long long input, map_paths& path){ 
@@ -362,6 +362,7 @@ int main(int argc, char** argv){
     map_paths path;
     path[std::make_pair(0, 0)] = 1;
     seen_paths visited;
+    int oxygen_x, oxygen_y;
     std::priority_queue<moves, std::vector<moves>, std::greater<moves>> history;
     history.push(std::make_pair(0, state{code, ip, relative_base, 0, 0}));
     while (!history.empty()){
@@ -378,8 +379,11 @@ int main(int argc, char** argv){
             cp_program.ip = execute_program(cp_program.code, output, inputs, cp_program.ip, cp_program.relative_base);
             if (cp_program.ip == -1) continue;
             if (output == 2){
-                std::cout << "Found oxygen system with " << steps+1 << " commands " << std::endl;
-                return 0;
+                update_xy(cp_program, inputs);
+                path[cp_program.get_coords()] = 2;
+                oxygen_y = cp_program.y;
+                oxygen_x = cp_program.x;
+                continue;
             }
             else if (output == 1){
                 update_xy(cp_program, inputs);
@@ -396,4 +400,36 @@ int main(int argc, char** argv){
             history.push(std::make_pair(steps+1, cp_program));
         }
     }
+    if (DEBUG){
+        int prev_y = -1;
+        for (auto& element: path){
+            if (element.first.first != prev_y) std::cout << std::endl;
+            prev_y = element.first.first;
+            if (element.second == 2){
+                std::cout << "O";
+            }
+            else if (element.second == 1){
+                std::cout << ".";
+            }
+            else {
+                std::cout << "#";
+            }
+        }
+    }
+    std::queue<std::tuple<int, int, int>> to_fill;
+    int max_dist = 0;
+    to_fill.push(std::make_tuple(0, oxygen_y, oxygen_x));
+    while (!to_fill.empty()){
+        int dist = std::get<0>(to_fill.front());
+        int y = std::get<1>(to_fill.front());
+        int x = std::get<2>(to_fill.front());
+        to_fill.pop();
+        max_dist = std::max(max_dist, dist);
+        for (auto& coords: {std::make_pair(y-1, x), std::make_pair(y+1, x), std::make_pair(y, x-1), std::make_pair(y, x+1)}){
+            if (path[coords] != 1) continue;
+            path[coords] = 2;
+            to_fill.push(std::make_tuple(dist+1, coords.first, coords.second));
+        }
+    }
+    std::cout << "Time to fill the room is " << max_dist << " minutes" << std::endl;
 }
